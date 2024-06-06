@@ -1,0 +1,99 @@
+#############################
+# Example location metadata #
+#############################
+
+oven:
+  footprint:
+    type: box
+    dims: [0.5, 0.9]
+    height: 0.5
+  nav_poses:
+    - [-0.4, 0, 0]
+    - [0.4, 0, 3.14]
+  locations:
+    - name: "tabletop"
+      footprint:
+        type: parent
+        padding: 0.1
+  color: [0.2, 0, 0]
+
+printer:
+  footprint:
+    type: box
+    dims: [0.5, 0.9]
+    height: 0.5
+  nav_poses:
+    - [-0.4, 0, 0]
+    - [0.4, 0, 3.14]
+  locations:
+    - name: "tabletop"
+      footprint:
+        type: parent
+        padding: 0.1
+  color: [0.2, 0, 0]
+
+eclss:
+  footprint:
+    type: box
+    dims: [0.5, 0.9]
+    height: 0.5
+  nav_poses:
+    - [-0.4, 0, 0]
+    - [0.4, 0, 3.14]
+  locations:
+    - name: "tabletop"
+      footprint:
+        type: parent
+        padding: 0.1
+  color: [0.2, 0, 0]
+
+desk:
+  footprint:
+    type: polygon
+    coords:
+      - [-0.3, -0.3]
+      - [0.3, -0.3]
+      - [0.3, 0.3]
+      - [-0.3, 0.3]
+    height: 0.3
+  locations:
+    - name: "desktop"
+      footprint:
+        type: parent
+      nav_poses:
+        - [0, -0.5, 1.57]
+        - [-0.5, 0, 0]
+        - [0, 0.5, -1.57]
+        - [0.5, 0, 3.14]
+
+storage_rack:
+  footprint:
+    type: box
+    dims: [1.2, 0.6]
+    height: 0.75
+  locations:
+    - name: "top"
+      footprint:
+        type: polygon
+        coords:
+          - [-0.25, -0.25]
+          - [0.25, -0.25]
+          - [0.25, 0.25]
+          - [-0.25, 0.25]
+        offset: [0.3, 0]
+      nav_poses:
+        - [0, 0.5, -1.57]
+        - [0, -0.5, 1.57]
+    - name: "bottom"
+      footprint:
+        type: polygon
+        coords:
+          - [-0.25, -0.25]
+          - [0.25, -0.25]
+          - [0.25, 0.25]
+          - [-0.25, 0.25]
+        offset: [-0.3, 0]
+      nav_poses:
+        - [0, 0.5, -1.57]
+        - [0, -0.5, 1.57]
+  color: [0, 0.2, 0]
