@@ -26,9 +26,9 @@ install(PROGRAMS
   ../pyrobosim/examples/demo_rrt.py
   ../pyrobosim/examples/demo_pddl.py
   ../pyrobosim/examples/demo_world_save.py
-  experiments/spacehab_demo.py
-  experiments/spacehab_world.py
-  experiments/spacehab_planner.py
+  experiments/exp_demo.py
+  experiments/world.py
+  experiments/planner.py
   DESTINATION lib/${PROJECT_NAME}
 )
 
