@@ -13,8 +13,6 @@ from rclpy.node import Node
 from pyrobosim.core import WorldYamlLoader
 from pyrobosim.planning.pddlstream import PDDLStreamPlanner, get_default_domains_folder
 from pyrobosim.utils.general import get_data_folder
-#from spacehabsim.utils.general import get_data_folder
-
 
 from pyrobosim_ros.ros_interface import update_world_from_state_msg
 from pyrobosim_ros.ros_conversions import (
@@ -25,11 +23,10 @@ from pyrobosim_msgs.action import ExecuteTaskPlan
 from pyrobosim_msgs.msg import GoalSpecification
 from pyrobosim_msgs.srv import RequestWorldState
 
-
 def load_world():
     """Load a test world."""
     loader = WorldYamlLoader()
-    world_file = "pddlstream_simple_world.yaml"
+    world_file = "world1_data.yaml"
     data_folder = get_data_folder()
     return loader.from_yaml(os.path.join(data_folder, world_file))
 
@@ -38,11 +35,11 @@ class PlannerNode(Node):
     def __init__(self):
         self.latest_goal = None
         self.planning = False
-        super().__init__("demo_pddlstream_planner")
+        super().__init__("exp_planner")
 
         # Declare parameters
-        self.declare_parameter("example", value="01_simple")
-        self.declare_parameter("subscribe", value=True)
+        self.declare_parameter("scenario", value="01_simple")
+        self.declare_parameter("subscribe", value=False)
         self.declare_parameter("verbose", value=True)
         self.declare_parameter("search_sample_ratio", value=0.5)
 
@@ -64,8 +61,8 @@ class PlannerNode(Node):
 
         # Create the world and planner
         self.world = load_world()
-        example = self.get_parameter("example").value
-        domain_folder = os.path.join(get_default_domains_folder(), example)
+        scenario = self.get_parameter("scenario").value
+        domain_folder = os.path.join(get_default_domains_folder(), scenario)
         self.planner = PDDLStreamPlanner(self.world, domain_folder)
 
         self.get_logger().info("Planning node ready.")
@@ -77,15 +74,19 @@ class PlannerNode(Node):
                 GoalSpecification, "goal_specification", self.goalspec_callback, 10
             )
         else:
-            if example == "01_simple":
+            if scenario == "01_simple":
+                self.get_logger().info("Planning for simple example.")
+
                 # Task specification for simple example.
                 self.latest_goal = [
-                    ("At", "robot", "bedroom"),
-                    ("At", "apple0", "table0_tabletop"),
-                    ("At", "banana0", "counter0_left"),
-                    ("Holding", "robot", "water0"),
+                    ("At", "box_1", "rack_a_top"),
+                    ("At", "box_2", "rack_a_bottom"),
+                    ("At", "box_3", "rack_b_top"),
+                    ("At", "box_4", "rack_b_bottom"),
+                    ("At", "robot1", "module"),
+
                 ]
-            elif example in [
+            elif scenario in [
                 "02_derived",
                 "03_nav_stream",
                 "04_nav_manip_stream",
@@ -99,7 +100,7 @@ class PlannerNode(Node):
                     ("HasAll", "table", "water"),
                 ]
             else:
-                print(f"Invalid example: {example}")
+                print(f"Invalid example: {scenario}")
                 return
             time.sleep(2.0)
 
@@ -153,7 +154,7 @@ class PlannerNode(Node):
         plan = self.planner.plan(
             robot,
             self.latest_goal,
-            max_attempts=3,
+            max_attempts=10,
             search_sample_ratio=self.get_parameter("search_sample_ratio").value,
             planner="ff-astar",
             max_planner_time=10.0,

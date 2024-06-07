@@ -17,9 +17,9 @@ metadata:
 
 # ROBOTS
 robots:
-  - name: "robot2"
+  - name: robot1
     radius: 0.06
-    color: [0.0, 0.8, 0.8]
+    color: [0.8, 0.8, 0.0]
     location: module
     path_planner:
       type: astar
@@ -48,27 +48,32 @@ locations:
   - name: rack_a
     category: storage_rack
     parent: module
-    pose: [0, 0.675, 0, 0] # x, y, z, yaw
+    pose: [2.65, 0, 0, 1.57] # x, y, z, yaw
 
   - name: rack_b
     category: storage_rack
     parent: module
     pose: [-2.65, 0, 0, 1.57] # x, y, z, yaw
 
+  - name: work_rack
+    category: work_rack
+    parent: module
+    pose: [0, 0.5, 0, 0] # x, y, z, yaw
+
 # OBJECTS: Can be picked, placed, and moved by robot
 objects:
   - category: bracket
     name: box_1
-    parent: rack_a
+    parent: work_rack
 
   - category: bracket
     name: box_2
-    parent: rack_a
+    parent: work_rack
 
   - category: bracket
     name: box_3
-    parent: rack_a
+    parent: work_rack
 
   - category: bracket
     name: box_4
-    parent: rack_a
+    parent: work_rack
