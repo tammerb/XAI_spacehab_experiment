@@ -86,6 +86,19 @@ class PlannerNode(Node):
                     ("At", "robot1", "module"),
 
                 ]
+            elif scenario == "02_derived":
+                self.get_logger().info("Planning for derived example.")
+
+                # Task specification for simple example.
+                self.latest_goal = [
+                    #("Has", "rack_a", "bracket"),
+                    ("Has", "rack_a_top", "bracket"),
+                    ("Has", "rack_b_top", "bracket"),
+                    ("Has", "rack_a_bottom", "bracket"),
+                    ("Has", "rack_b_bottom", "bracket"),
+                    ("At", "robot1", "module"),
+
+                ]
             elif scenario in [
                 "02_derived",
                 "03_nav_stream",
