@@ -85,7 +85,7 @@ work_rack:
     dims: [2, 0.6]
     height: 0.75
   locations:
-    - name: "top"
+    - name: "main"
       footprint:
         type: polygon
         coords:

@@ -55,7 +55,7 @@ locations:
     parent: module
     pose: [-2.65, 0, 0, 1.57] # x, y, z, yaw
 
-  - name: work_rack
+  - name: workspace
     category: work_rack
     parent: module
     pose: [0, 0.5, 0, 0] # x, y, z, yaw
@@ -64,16 +64,16 @@ locations:
 objects:
   - category: bracket
     name: box_1
-    parent: work_rack
+    parent: rack_a
 
   - category: bracket
     name: box_2
-    parent: work_rack
+    parent: rack_a
 
   - category: bracket
     name: box_3
-    parent: work_rack
+    parent: rack_b
 
   - category: bracket
     name: box_4
-    parent: work_rack
+    parent: rack_b

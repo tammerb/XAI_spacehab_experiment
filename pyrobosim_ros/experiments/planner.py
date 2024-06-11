@@ -62,7 +62,7 @@ class PlannerNode(Node):
         # Create the world and planner
         self.world = load_world()
         scenario = self.get_parameter("scenario").value
-        domain_folder = os.path.join(get_default_domains_folder(), scenario)
+        domain_folder = os.path.join(get_default_domains_folder(), "02_derived")
         self.planner = PDDLStreamPlanner(self.world, domain_folder)
 
         self.get_logger().info("Planning node ready.")
@@ -74,43 +74,45 @@ class PlannerNode(Node):
                 GoalSpecification, "goal_specification", self.goalspec_callback, 10
             )
         else:
-            if scenario == "01_simple":
+            if scenario == "a":
                 self.get_logger().info("Planning for simple example.")
 
                 # Task specification for simple example.
                 self.latest_goal = [
                     ("At", "box_1", "rack_a_top"),
                     ("At", "box_2", "rack_a_bottom"),
-                    ("At", "box_3", "rack_b_top"),
-                    ("At", "box_4", "rack_b_bottom"),
                     ("At", "robot1", "module"),
 
                 ]
-            elif scenario == "02_derived":
+            elif scenario == "b":
                 self.get_logger().info("Planning for derived example.")
 
                 # Task specification for simple example.
                 self.latest_goal = [
-                    #("Has", "rack_a", "bracket"),
-                    ("Has", "rack_a_top", "bracket"),
                     ("Has", "rack_b_top", "bracket"),
-                    ("Has", "rack_a_bottom", "bracket"),
                     ("Has", "rack_b_bottom", "bracket"),
+                    ("At", "robot1", "module"),
+                ]
+            elif scenario == "c":
+                self.get_logger().info("Planning for derived example.")
+
+                # Task specification for simple example.
+                self.latest_goal = [
+                    ("HasAll", "work_rack", "bracket"),
                     ("At", "robot1", "module"),
 
                 ]
-            elif scenario in [
-                "02_derived",
-                "03_nav_stream",
-                "04_nav_manip_stream",
-                "05_nav_grasp_stream",
-            ]:
-                # Task specification for derived predicate example.
+            elif scenario == "d":
+                self.get_logger().info("Planning for derived example.")
+
+                # Task specification for simple example.
                 self.latest_goal = [
-                    ("Has", "desk0_desktop", "banana0"),
-                    ("Has", "counter", "apple1"),
-                    ("HasNone", "bathroom", "banana"),
-                    ("HasAll", "table", "water"),
+                    ("Has", "rack_b_top", "bracket"),
+                    ("Has", "rack_a_top", "bracket"),
+                    ("HasNone", "work_rack", "bracket"),
+                    ("HandEmpty", "robot1"),
+                    ("At", "robot1", "module"),
+
                 ]
             else:
                 print(f"Invalid example: {scenario}")
