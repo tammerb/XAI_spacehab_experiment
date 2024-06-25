@@ -11,6 +11,7 @@ from matplotlib.backends.qt_compat import QtCore
 from matplotlib.backends.backend_qt5agg import NavigationToolbar2QT
 
 from .exp_world_canvas import SpaceWorldCanvas
+from .secondary_task import GridCanvas
 
 def start_gui(world):
     """
@@ -55,6 +56,7 @@ class SpaceHabSimMainWindow(PyRoboSimMainWindow):
 
         self.layout_created = False
         self.canvas = SpaceWorldCanvas(self, world, show)
+        self.secondary_canvas = GridCanvas(self)
         self.create_layout()
         self.canvas.show()
 
@@ -72,9 +74,9 @@ class SpaceHabSimMainWindow(PyRoboSimMainWindow):
         self.rand_goal_button = QtWidgets.QPushButton("Randomize nav goal")
         self.rand_goal_button.clicked.connect(self.rand_goal_cb)
         self.buttons_layout.addWidget(self.rand_goal_button)
-        self.rand_obj_button = QtWidgets.QPushButton("Randomize target object")
-        self.rand_obj_button.clicked.connect(self.rand_obj_cb)
-        self.buttons_layout.addWidget(self.rand_obj_button)
+        self.switch_task_button = QtWidgets.QPushButton("Switch task")
+        self.switch_task_button.clicked.connect(self.switch_task_cb)
+        self.buttons_layout.addWidget(self.switch_task_button)
 
         # Robot edit box
         self.robot_layout = QtWidgets.QGridLayout()
@@ -108,7 +110,13 @@ class SpaceHabSimMainWindow(PyRoboSimMainWindow):
         self.world_layout = QtWidgets.QVBoxLayout()
         self.nav_toolbar = NavigationToolbar2QT(self.canvas, self)
         self.addToolBar(QtCore.Qt.BottomToolBarArea, self.nav_toolbar)  # remove this for experimental setup.
-        self.world_layout.addWidget(self.canvas)
+
+        # Stacked Widget layout
+        self.stacked_widget = QtWidgets.QStackedWidget()
+        self.stacked_widget.addWidget(self.canvas)
+        self.stacked_widget.addWidget(self.secondary_canvas)
+        self.world_layout.addWidget(self.stacked_widget)
+        self.canvas_index=0 
 
         # Main layout
         self.main_layout = QtWidgets.QVBoxLayout(self.main_widget)
@@ -126,3 +134,13 @@ class SpaceHabSimMainWindow(PyRoboSimMainWindow):
         """Cleans up running threads on closing the window."""
         self.canvas.nav_animator.stop()
         self.canvas.nav_animator.wait()
+
+    def switch_task_cb(self):
+        if self.canvas_index == 0:
+            self.stacked_widget.setCurrentIndex(1)
+            self.canvas_index = 1
+        else:
+            self.stacked_widget.setCurrentIndex(0)
+            self.canvas_index = 0
+        self.canvas.show_world_state(navigating=True)
+        self.canvas.draw()
