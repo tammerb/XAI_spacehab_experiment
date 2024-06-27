@@ -74,7 +74,7 @@ class PlannerNode(Node):
                 GoalSpecification, "goal_specification", self.goalspec_callback, 10
             )
         else:
-            if scenario == "a":
+            if scenario == "z":
                 self.get_logger().info("Planning for simple example.")
 
                 # Task specification for simple example.
