@@ -7,8 +7,6 @@ class SpaceWorldCanvas(WorldCanvas):
     print("Using SpaceWorldCanvas")
     #pass
     def show_world_state(self, robot=None, navigating=False):
-        print("Calling MY show_world_state")
-
         if robot is not None:
             title_bits = []
             if navigating:

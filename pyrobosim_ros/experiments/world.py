@@ -44,7 +44,6 @@ def main():
 
     node.set_world(world)
 
-
     # Start ROS node in separate thread
     ros_thread = threading.Thread(target=lambda: node.start(wait_for_gui=True))
     ros_thread.start()

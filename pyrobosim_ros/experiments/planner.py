@@ -79,10 +79,7 @@ class PlannerNode(Node):
 
                 # Task specification for simple example.
                 self.latest_goal = [
-                    ("At", "box_1", "rack_a_top"),
-                    ("At", "box_2", "rack_a_bottom"),
                     ("At", "robot", "module"),
-
                 ]
             elif scenario == "b":
                 self.get_logger().info("Planning for derived example.")
@@ -98,7 +95,7 @@ class PlannerNode(Node):
 
                 # Task specification for simple example.
                 self.latest_goal = [
-                    ("HasAll", "work_rack", "bracket"),
+                    ("HasAll", "rack_b_top", "bracket"),
                     ("At", "robot", "module"),
 
                 ]
