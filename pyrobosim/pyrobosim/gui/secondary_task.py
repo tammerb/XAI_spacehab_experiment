@@ -11,7 +11,7 @@ class GridCanvas(FigureCanvasQTAgg):
         super().__init__(self.fig)
 
         self.grid_squares = []
-        self.grid_size = (15, 15)  # Change the grid size as per your requirement
+        self.grid_size = (15, 25)  # Change the grid size as per your requirement
         self.checked_buttons = []
         self.setup_grid()
 
@@ -24,14 +24,16 @@ class GridCanvas(FigureCanvasQTAgg):
             for j in range(self.grid_size[1]):
                 grid_square = QPushButton()
                 grid_square.setCheckable(True)
-                grid_square.clicked.connect(self.change_button_color)  # Add callback here
+                grid_square.clicked.connect(self.check_button)  # Add callback here
                 layout.addWidget(grid_square, i, j)
                 self.grid_squares.append(grid_square)
-
+        self.grid_squares[2].setChecked(True)
+        self.grid_squares[2].setStyleSheet("background-color: green")
+        self.checked_buttons.append(self.grid_squares[2])
         self.ax.axis('off')
         self.draw()
 
-    def change_button_color(self):
+    def check_button(self):
         button = self.sender()
         if button.isChecked():
             button.setStyleSheet("background-color: green")  # Change to desired color
@@ -39,14 +41,14 @@ class GridCanvas(FigureCanvasQTAgg):
         else:
             button.setStyleSheet("")  # Reset to default color
             self.checked_buttons.remove(button)
-        self.reset_checked_buttons()
+            self.randomly_check_buttons()
 
-    def uncheck_button(self, button):
-        button.setChecked(False)
-        button.setStyleSheet("")  # Reset to default color
-
-    def reset_checked_buttons(self):
-        if len(self.checked_buttons) > 4:
-                random_button = random.choice(self.checked_buttons)
-                random_button.setChecked(False)
-                random_button.setStyleSheet("")  # Reset to default color
+    def randomly_check_buttons(self):
+        """Loops through all grid_squares and randomly checks 10% of the unchecked buttons."""
+        for button in self.grid_squares:
+            if not button.isChecked() and random.random() < 0.002:
+                button.setChecked(True)
+                button.setStyleSheet("background-color: green")
+                self.checked_buttons.append(button)
+        if len(self.checked_buttons) == 0:
+            self.randomly_check_buttons()

@@ -56,6 +56,7 @@ class SpaceHabSimMainWindow(PyRoboSimMainWindow):
 
         self.layout_created = False
         self.canvas = SpaceWorldCanvas(self, world, show)
+        #self.secondary_canvas = GridCanvas(self)
         self.secondary_canvas = GridCanvas(self)
         self.create_layout()
         self.canvas.show()
