@@ -39,7 +39,7 @@ torso:
 arm:
   footprint:
     type: box
-    dims: [0.05, 0.2]
+    dims: [0.1, 0.1]
   color: [0.7, 0.3, 1]
 
 
@@ -54,3 +54,12 @@ bracket:
     type: box
     dims: [0.05, 0.2]
   color: [0.7, 0.3, 1]
+
+  triangle:
+  footprint:
+    type: polygon
+    coords:
+      - [0.0, 0.1]
+      - [0.05, 0.0]
+      - [-0.05, 0.0]
+  color: [0.0, 0.1, 0.7]
