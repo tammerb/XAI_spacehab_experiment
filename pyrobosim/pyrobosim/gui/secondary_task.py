@@ -3,6 +3,7 @@ from matplotlib.figure import Figure
 from PySide6.QtWidgets import QPushButton, QGridLayout, QWidget, QApplication, QLabel
 from PySide6.QtCore import Qt
 import random
+from time import sleep
 
 class GridCanvas(FigureCanvasQTAgg):
     def __init__(self, parent=None):
@@ -50,5 +51,6 @@ class GridCanvas(FigureCanvasQTAgg):
                 button.setChecked(True)
                 button.setStyleSheet("background-color: green")
                 self.checked_buttons.append(button)
+
         if len(self.checked_buttons) == 0:
             self.randomly_check_buttons()
