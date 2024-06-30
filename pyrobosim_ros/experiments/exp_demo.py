@@ -10,7 +10,7 @@ import threading
 import numpy as np
 
 from pyrobosim.core import Robot, World, WorldYamlLoader
-from pyrobosim.gui.exp_main import start_gui
+from pyrobosim.gui.exp1_main import start_gui
 from pyrobosim.utils.general import get_data_folder
 from pyrobosim.navigation import ConstantVelocityExecutor, PathPlanner
 from pyrobosim.utils.pose import Pose

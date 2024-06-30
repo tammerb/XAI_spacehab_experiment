@@ -142,7 +142,7 @@ class SpaceHabSimMainWindow(PyRoboSimMainWindow):
         self.canvas.draw()
     
     def get_current_robot(self):
-        return self.world.get_robot_by_name("human")
+        return self.world.get_robot_by_name("robot")
     
     def on_navigate_click(self):
         """Callback to navigate to a goal location."""

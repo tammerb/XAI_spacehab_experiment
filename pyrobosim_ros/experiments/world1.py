@@ -9,7 +9,7 @@ import rclpy
 import threading
 
 from pyrobosim.core import Robot, World, WorldYamlLoader
-from pyrobosim.gui.exp_main import start_gui
+from pyrobosim.gui.exp1_main import start_gui
 from pyrobosim.utils.general import get_data_folder
 from pyrobosim_ros.ros_interface import WorldROSWrapper
 from pyrobosim.navigation import ConstantVelocityExecutor, PathPlanner

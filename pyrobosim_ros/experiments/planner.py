@@ -62,7 +62,7 @@ class PlannerNode(Node):
         # Create the world and planner
         self.world = load_world()
         scenario = self.get_parameter("scenario").value
-        domain_folder = os.path.join(get_default_domains_folder(), "02_derived")
+        domain_folder = os.path.join(get_default_domains_folder(), "05_nav_grasp_stream")
         self.planner = PDDLStreamPlanner(self.world, domain_folder)
 
         self.get_logger().info("Planning node ready.")
@@ -74,11 +74,15 @@ class PlannerNode(Node):
                 GoalSpecification, "goal_specification", self.goalspec_callback, 10
             )
         else:
-            if scenario == "z":
+            if scenario == "a":
                 self.get_logger().info("Planning for simple example.")
 
                 # Task specification for simple example.
                 self.latest_goal = [
+                    ("HasAll", "rack_a_rack", "triangle"),
+                    ("HasAll", "rack_b_rack", "square"),
+                    ("HasAll", "rack_c_rack", "circle"),
+                    ("HasAll", "rack_d_rack", "rectangle"),
                     ("At", "robot", "module"),
                 ]
             elif scenario == "b":
@@ -86,8 +90,8 @@ class PlannerNode(Node):
 
                 # Task specification for simple example.
                 self.latest_goal = [
-                    ("Has", "rack_b_top", "bracket"),
-                    ("Has", "rack_b_bottom", "bracket"),
+                    ("Has", "rack_b", "triangle"),
+                    ("Has", "rack_b", "triangle"),
                     ("At", "robot", "module"),
                 ]
             elif scenario == "c":
@@ -95,7 +99,7 @@ class PlannerNode(Node):
 
                 # Task specification for simple example.
                 self.latest_goal = [
-                    ("HasAll", "rack_b_top", "bracket"),
+                    ("HasAll", "work_rack", "triangle"),
                     ("At", "robot", "module"),
 
                 ]
@@ -104,15 +108,15 @@ class PlannerNode(Node):
 
                 # Task specification for simple example.
                 self.latest_goal = [
-                    ("Has", "rack_b_top", "bracket"),
-                    ("Has", "rack_a_top", "bracket"),
-                    ("HasNone", "work_rack", "bracket"),
+                    ("Has", "rack_b", "triangle"),
+                    ("Has", "rack_a", "triangle"),
+                    ("HasNone", "work_rack", "triangle"),
                     ("HandEmpty", "robot"),
                     ("At", "robot", "module"),
 
                 ]
             else:
-                print(f"Invalid example: {scenario}")
+                print(f"Invalid scenario: {scenario}")
                 return
             time.sleep(2.0)
 
