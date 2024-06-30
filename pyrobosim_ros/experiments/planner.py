@@ -62,7 +62,7 @@ class PlannerNode(Node):
         # Create the world and planner
         self.world = load_world()
         scenario = self.get_parameter("scenario").value
-        domain_folder = os.path.join(get_default_domains_folder(), "05_nav_grasp_stream")
+        domain_folder = os.path.join(get_default_domains_folder(), "02_derived")
         self.planner = PDDLStreamPlanner(self.world, domain_folder)
 
         self.get_logger().info("Planning node ready.")
@@ -81,8 +81,8 @@ class PlannerNode(Node):
                 self.latest_goal = [
                     ("HasAll", "rack_a_rack", "triangle"),
                     ("HasAll", "rack_b_rack", "square"),
-                    ("HasAll", "rack_c_rack", "circle"),
-                    ("HasAll", "rack_d_rack", "rectangle"),
+                    #("HasAll", "rack_c_rack", "circle"),
+                    #("HasAll", "rack_d_rack", "rectangle"),
                     ("At", "robot", "module"),
                 ]
             elif scenario == "b":
