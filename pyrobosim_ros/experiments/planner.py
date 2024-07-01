@@ -79,10 +79,10 @@ class PlannerNode(Node):
 
                 # Task specification for simple example.
                 self.latest_goal = [
-                    ("HasAll", "rack_a_rack", "triangle"),
-                    ("HasAll", "rack_b_rack", "square"),
-                    #("HasAll", "rack_c_rack", "circle"),
-                    #("HasAll", "rack_d_rack", "rectangle"),
+                    ("HasAll", "bin_a_", "triangle"),
+                    ("HasAll", "bin_b_", "square"),
+                    ("HasAll", "bin_c_", "circle"),
+                    ("HasAll", "bin_d_", "rectangle"),
                     ("At", "robot", "module"),
                 ]
             elif scenario == "b":
@@ -90,8 +90,10 @@ class PlannerNode(Node):
 
                 # Task specification for simple example.
                 self.latest_goal = [
-                    ("Has", "rack_b", "triangle"),
-                    ("Has", "rack_b", "triangle"),
+                    ("At", "triangle0", "bin_a_"),
+                    ("At", "square0", "bin_b_"),
+                    ("At", "circle0", "bin_c_"),
+                    ("At", "rectangle0", "bin_d_"),
                     ("At", "robot", "module"),
                 ]
             elif scenario == "c":

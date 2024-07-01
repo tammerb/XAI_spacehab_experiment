@@ -19,7 +19,7 @@ metadata:
 robots:
   - name: robot
     radius: 0.06
-    color: [0.8, 0.8, 0.0]
+    color: [.1, 0.1, .1]
     location: module
     pose: [0, 0, 0]
     max_linear_velocity: 0.1
@@ -41,36 +41,36 @@ rooms:
       dims: [5, 4]
       offset: [0, 0]
     wall_width: 0.2
-    color: [0, 0.6, 0]
+    color: [0.8, 0.8, 0.8]
 
 # HALLWAYS: Connect rooms, no hallways here
 
 # LOCATIONS: Can contain objects
 locations:
-  - name: rack_a
-    category: storage_rack
+  - name: bin_a
+    category: storage_bin
     parent: module
     pose: [-2.15, 0, 0, 0] # x, y, z, yaw
 
-  - name: rack_b
-    category: storage_rack
+  - name: bin_b
+    category: storage_bin
     parent: module
     pose: [-2.15, -0.75, 0, 0]
 
-  - name: rack_c
-    category: storage_rack
+  - name: bin_c
+    category: storage_bin
     parent: module
     pose: [2.15, 0, 0, 0]
 
-  - name: rack_d
-    category: storage_rack
+  - name: bin_d
+    category: storage_bin
     parent: module
     pose: [2.15, -0.75, 0, 0]
 
   - name: workspace
     category: work_rack
     parent: module
-    pose: [0, 1.5, 0, 0]
+    pose: [0, 1.6, 0, 0]
 
 # OBJECTS: Can be picked, placed, and moved by robot
 objects:
@@ -101,8 +101,8 @@ objects:
   #- category: square
   #  parent: workspace
 #
-  - category: triangle
-    parent: workspace
+  #- category: triangle
+  #  parent: workspace
 
   - category: triangle
     parent: workspace

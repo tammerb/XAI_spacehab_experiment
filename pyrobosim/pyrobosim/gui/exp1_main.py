@@ -57,7 +57,6 @@ class SpaceHabSimMainWindow(PyRoboSimMainWindow):
 
         self.layout_created = False
         self.canvas = SpaceWorldCanvas(self, world, show)
-        #self.secondary_canvas = GridCanvas(self)
         self.secondary_canvas = GridCanvas(self)
         self.create_layout()
         self.canvas.show()
@@ -117,9 +116,9 @@ class SpaceHabSimMainWindow(PyRoboSimMainWindow):
 
         # Main layout
         self.main_layout = QtWidgets.QVBoxLayout(self.main_widget)
-        self.main_layout.addLayout(self.buttons_layout)
-        self.main_layout.addLayout(self.object_layout)
-        self.main_layout.addLayout(self.navigation_layout)
+        #self.main_layout.addLayout(self.buttons_layout)
+        #self.main_layout.addLayout(self.object_layout)
+        #self.main_layout.addLayout(self.navigation_layout)
         self.main_layout.addLayout(self.world_layout)
 
         self.main_widget.setLayout(self.main_layout)
