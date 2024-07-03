@@ -21,7 +21,7 @@ robots:
     radius: 0.06
     color: [.1, 0.1, .1]
     location: module
-    pose: [0, 0, 0]
+    pose: [0.5, -0.5, 0]
     max_linear_velocity: 0.1
     path_planner:
       type: astar
@@ -55,17 +55,18 @@ locations:
   - name: bin_b
     category: storage_bin
     parent: module
-    pose: [-2.15, -0.75, 0, 0]
+    pose: [2.15, -0.25, 0, 0]
+    #pose: [-2.15, -0.75, 0, 0]
 
-  - name: bin_c
-    category: storage_bin
-    parent: module
-    pose: [2.15, 0, 0, 0]
-
-  - name: bin_d
-    category: storage_bin
-    parent: module
-    pose: [2.15, -0.75, 0, 0]
+  #- name: bin_c
+  #  category: storage_bin
+  #  parent: module
+  #  pose: [2.15, -0.25, 0, 0]
+#
+  #- name: bin_d
+  #  category: storage_bin
+  #  parent: module
+  #  pose: [2.15, -1.0, 0, 0]
 
   - name: workspace
     category: work_rack
@@ -80,11 +81,11 @@ objects:
   - category: rectangle
     parent: workspace
 
-  #- category: rectangle
-  #  parent: workspace
-#
-  #- category: circle
-  #  parent: workspace
+  - category: rectangle
+    parent: workspace
+
+  - category: circle
+    parent: workspace
 
   - category: circle
     parent: workspace
@@ -98,14 +99,14 @@ objects:
   - category: square
     parent: workspace
 
-  #- category: square
-  #  parent: workspace
-#
-  #- category: triangle
-  #  parent: workspace
+  - category: square
+    parent: workspace
+
+  - category: triangle
+    parent: workspace
 
   - category: triangle
     parent: workspace
 
   - category: triangle
-    parent: workspace
+    parent: bin_a

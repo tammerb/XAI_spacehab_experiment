@@ -180,7 +180,7 @@ class WorldCanvas(FigureCanvasQTAgg):
             t = self.axes.text(
                 r.centroid[0],
                 r.centroid[1],
-                r.name,
+                None, #r.name,
                 color=r.viz_color,
                 fontsize=12,
                 ha="center",
@@ -217,7 +217,9 @@ class WorldCanvas(FigureCanvasQTAgg):
             x = obj.pose.x + 1.0 * (xmax - xmin)
             y = obj.pose.y + 1.0 * (ymax - ymin)
             obj.viz_text = self.axes.text(
-                x, y, obj.name, clip_on=True, color=obj.viz_color, fontsize=8
+                x, y, 
+                None, #obj.name, 
+                clip_on=True, color=obj.viz_color, fontsize=8
             )
         self.obj_patches = [o.viz_patch for o in (self.world.objects)]
         self.obj_texts = [o.viz_text for o in (self.world.objects)]

@@ -79,10 +79,7 @@ class PlannerNode(Node):
 
                 # Task specification for simple example.
                 self.latest_goal = [
-                    ("HasAll", "bin_a_", "triangle"),
-                    ("HasAll", "bin_b_", "square"),
-                    ("HasAll", "bin_c_", "circle"),
-                    ("HasAll", "bin_d_", "rectangle"),
+                    ("Has", "bin_a_", "triangle"),
                     ("At", "robot", "module"),
                 ]
             elif scenario == "b":
@@ -90,10 +87,7 @@ class PlannerNode(Node):
 
                 # Task specification for simple example.
                 self.latest_goal = [
-                    ("At", "triangle0", "bin_a_"),
-                    ("At", "square0", "bin_b_"),
-                    ("At", "circle0", "bin_c_"),
-                    ("At", "rectangle0", "bin_d_"),
+                    ("HasAll", "bin_b_", "square"),
                     ("At", "robot", "module"),
                 ]
             elif scenario == "c":
@@ -101,7 +95,7 @@ class PlannerNode(Node):
 
                 # Task specification for simple example.
                 self.latest_goal = [
-                    ("HasAll", "work_rack", "triangle"),
+                    ("HasAll", "bin_c_", "circle"),
                     ("At", "robot", "module"),
 
                 ]
@@ -110,12 +104,16 @@ class PlannerNode(Node):
 
                 # Task specification for simple example.
                 self.latest_goal = [
-                    ("Has", "rack_b", "triangle"),
-                    ("Has", "rack_a", "triangle"),
-                    ("HasNone", "work_rack", "triangle"),
-                    ("HandEmpty", "robot"),
+                    ("HasAll", "bin_d_", "rectangle"),
                     ("At", "robot", "module"),
+                ]
+            elif scenario == "e":
+                self.get_logger().info("Planning for derived example.")
 
+                # Task specification for simple example.
+                self.latest_goal = [
+                    ("HasNone", "bin_a_", "triangle"),
+                    ("At", "robot", "module"),
                 ]
             else:
                 print(f"Invalid scenario: {scenario}")
