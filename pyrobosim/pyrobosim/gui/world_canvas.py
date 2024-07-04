@@ -52,7 +52,7 @@ class WorldCanvas(FigureCanvasQTAgg):
     """ zorder for object visualization. """
     robot_zorder = 3
     """ zorder for robot visualization. """
-    robot_dir_line_factor = 3.0
+    robot_dir_line_factor = 2.0
     """ Multiplier of robot radius for plotting robot orientation lines. """
 
     nav_trigger = Signal(str, str, Path)
@@ -67,8 +67,8 @@ class WorldCanvas(FigureCanvasQTAgg):
         world,
         show=True,
         dpi=100,
-        animation_dt=0.1,
-        realtime_factor=1.0,
+        animation_dt=0.0001,
+        realtime_factor=0.5,
     ):
         """
         Creates an instance of a pyrobosim figure canvas.
