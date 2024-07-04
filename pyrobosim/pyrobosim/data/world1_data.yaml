@@ -18,7 +18,7 @@ metadata:
 # ROBOTS
 robots:
   - name: robot
-    radius: 0.06
+    radius: 0.1
     color: [.1, 0.1, .1]
     location: module
     pose: [0.5, -0.5, 0]
@@ -30,7 +30,7 @@ robots:
         inflation_radius: 0.15
       heuristic: euclidean
       diagonal_motion: true
-      compress_path: false
+      compress_path: true
 
 
 # ROOMS: Polygonal regions that can contain object locations
@@ -50,23 +50,22 @@ locations:
   - name: bin_a
     category: storage_bin
     parent: module
-    pose: [-2.15, 0, 0, 0] # x, y, z, yaw
+    pose: [-2.15, -0.5, 0, 0] # x, y, z, yaw
+
+  - name: bin_c
+    category: storage_bin
+    parent: module
+    pose: [2.15, -0.5, 0, 0]
 
   - name: bin_b
     category: storage_bin
     parent: module
-    pose: [2.15, -0.25, 0, 0]
-    #pose: [-2.15, -0.75, 0, 0]
+    pose: [-2.15, -1.5, 0, 0]
 
-  #- name: bin_c
-  #  category: storage_bin
-  #  parent: module
-  #  pose: [2.15, -0.25, 0, 0]
-#
-  #- name: bin_d
-  #  category: storage_bin
-  #  parent: module
-  #  pose: [2.15, -1.0, 0, 0]
+  - name: bin_d
+    category: storage_bin
+    parent: module
+    pose: [2.15, -1.5, 0, 0]
 
   - name: workspace
     category: work_rack
@@ -102,11 +101,11 @@ objects:
   - category: square
     parent: workspace
 
-  - category: triangle
+  - category: square
+    parent: workspace
+
+  - category: square
     parent: workspace
 
   - category: triangle
     parent: workspace
-
-  - category: triangle
-    parent: bin_a
