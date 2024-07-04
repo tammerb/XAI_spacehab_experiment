@@ -67,6 +67,7 @@ class Robot:
         self.radius = radius
         self.height = height
         self.color = color
+        self.failure=None
 
         # Dynamics properties
         self.dynamics = RobotDynamics2D(
@@ -364,6 +365,7 @@ class Robot:
                     break
             if not is_valid_pose:
                 warnings.warn(f"Could not sample a placement position at {loc.name}")
+                self.failure = "Could not find a valid placement position."
                 return False
         else:
             # If a pose was specified, collision check it
@@ -412,8 +414,8 @@ class Robot:
 
                 self.world.gui.canvas.nav_trigger.emit(self.name, tgt_loc, action.path)
                 while self.executing_nav:
-                    time.sleep(0.5)  # Delay to wait for navigation
-                success = True  # TODO Need to keep track of nav status
+                    time.sleep(0.1)  # Delay to wait for navigation
+                success = True  # TODO Need to keep track of nav failure
             else:
                 goal_node = self.world.graph_node_from_entity(
                     action.target_location, robot=self
@@ -431,12 +433,15 @@ class Robot:
                 success = self.world.gui.canvas.pick_object(
                     self, action.object, action.pose
                 )
+                time.sleep(5) # Artificial delay for visualization
+
             else:
                 success = self.pick_object(action.object, action.pose)
 
         elif action.type == "place":
             if self.world.has_gui:
                 success = self.world.gui.canvas.place_object(self, action.pose)
+                time.sleep(5) # Artificial delay for visualization
             else:
                 success = self.place_object(action.pose)
 
