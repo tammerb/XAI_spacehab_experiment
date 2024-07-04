@@ -8,13 +8,11 @@ import os
 import rclpy
 import threading
 
-from pyrobosim.core import Robot, World, WorldYamlLoader
+from pyrobosim.core import WorldYamlLoader
 from pyrobosim.gui.exp1_main import start_gui
 from pyrobosim.utils.general import get_data_folder
 from pyrobosim_ros.ros_interface import WorldROSWrapper
-from pyrobosim.navigation import ConstantVelocityExecutor, PathPlanner
-from pyrobosim.navigation import OccupancyGrid
-from pyrobosim.utils.pose import Pose
+
 
 default_world_file = "world1_data.yaml"
 
