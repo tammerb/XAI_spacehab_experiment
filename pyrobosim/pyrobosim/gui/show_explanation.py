@@ -1,7 +1,7 @@
 import numpy as np
 
 def show_explanation(self, robot=None, navigating=False):
-    goal = "sort the shapes." # hard program this for now
+    goal = "sort the shapes" # hard program this for now
     if robot is not None:
         title_bits = []
         title_bits.append(f"The current goal is to {goal}.\n")
