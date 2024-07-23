@@ -56,3 +56,9 @@ torso:
       - [-0.075, 0.03]
       - [-0.075, -0.075]
   color: [0.0, 0.1, 0.7]
+
+helmet:
+  footprint:
+    type: circle
+    radius: 0.06
+  color: [0.7, 0.1, 0.1]

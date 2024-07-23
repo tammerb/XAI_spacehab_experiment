@@ -47,25 +47,30 @@ rooms:
 
 # LOCATIONS: Can contain objects
 locations:
-  - name: bin_a
+  - name: bin
     category: storage_bin
     parent: module
-    pose: [-2.15, -0.5, 0, 0] # x, y, z, yaw
+    pose: [0, -1.2, 0, 1.571] # x, y, z, yaw
 
-  - name: bin_c
-    category: storage_bin
-    parent: module
-    pose: [2.15, -0.5, 0, 0]
-
-  - name: bin_b
-    category: storage_bin
-    parent: module
-    pose: [-2.15, -1.5, 0, 0]
-
-  - name: bin_d
-    category: storage_bin
-    parent: module
-    pose: [2.15, -1.5, 0, 0]
+#  - name: bin_a
+#    category: storage_bin
+#    parent: module
+#    pose: [-2.15, -0.5, 0, 0] # x, y, z, yaw
+#
+#  - name: bin_c
+#    category: storage_bin
+#    parent: module
+#    pose: [2.15, -0.5, 0, 0]
+#
+#  - name: bin_b
+#    category: storage_bin
+#    parent: module
+#    pose: [-2.15, -1.5, 0, 0]
+#
+#  - name: bin_d
+#    category: storage_bin
+#    parent: module
+#    pose: [2.15, -1.5, 0, 0]
 
   - name: workspace
     category: work_rack
@@ -74,38 +79,47 @@ locations:
 
 # OBJECTS: Can be picked, placed, and moved by robot
 objects:
-  - category: rectangle
-    parent: workspace
-
-  - category: rectangle
-    parent: workspace
-
-  - category: rectangle
-    parent: workspace
-
-  - category: circle
-    parent: workspace
-
-  - category: circle
-    parent: workspace
-
-  - category: circle
-    parent: workspace
-
-  - category: square
-    parent: workspace
-
-  - category: square
-    parent: workspace
-
-  - category: square
-    parent: workspace
-
-  - category: square
-    parent: workspace
-
-  - category: square
+  - category: triangle
     parent: workspace
 
   - category: triangle
     parent: workspace
+
+#  - category: triangle
+#    parent: workspace
+#
+#  - category: triangle
+#    parent: workspace
+#
+#  - category: circle
+#    parent: workspace
+#
+  - category: circle
+    parent: workspace
+
+  - category: circle
+    parent: workspace
+
+#  - category: circle
+#    parent: workspace
+#
+#  - category: square
+#    parent: workspace
+
+  - category: square
+    parent: workspace
+
+  - category: square
+    parent: workspace
+
+#  - category: square
+#    parent: workspace
+
+#  - category: rectangle
+#    parent: workspace
+#
+#  - category: rectangle
+#    parent: workspace
+#
+#  - category: rectangle
+#    parent: workspace
