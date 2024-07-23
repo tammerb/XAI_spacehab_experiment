@@ -433,7 +433,7 @@ class Robot:
                 success = self.world.gui.canvas.pick_object(
                     self, action.object, action.pose
                 )
-                time.sleep(5) # Artificial delay for visualization
+                #time.sleep(5) # Artificial delay for visualization
 
             else:
                 success = self.pick_object(action.object, action.pose)
@@ -441,7 +441,7 @@ class Robot:
         elif action.type == "place":
             if self.world.has_gui:
                 success = self.world.gui.canvas.place_object(self, action.pose)
-                time.sleep(5) # Artificial delay for visualization
+                #time.sleep(5) # Artificial delay for visualization
             else:
                 success = self.place_object(action.pose)
 
