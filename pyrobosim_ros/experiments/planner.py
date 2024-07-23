@@ -6,6 +6,7 @@ Example showing how to use a PDDLStream planner as a ROS 2 node.
 
 import os
 import time
+import numpy as np
 import rclpy
 from rclpy.action import ActionClient
 from rclpy.node import Node
@@ -75,36 +76,41 @@ class PlannerNode(Node):
             )
         else:
             if scenario == "a":
-                self.get_logger().info("Planning for simple example.")
+                self.get_logger().info(f"Planning for scenario {scenario}.")
 
                 # Task specification for simple example.
                 self.latest_goal = [
-                    ("Has", "bin_a_", "triangle"),
+                    ("Has", "bin_a", "triangle"),
+                    ("Has", "bin_b", "circle"),
+                    ("Has", "bin_c", "square"),
                     ("At", "robot", "module"),
                 ]
             elif scenario == "b":
-                self.get_logger().info("Planning for derived example.")
+                self.get_logger().info(f"Planning for scenario {scenario}.")
 
-                # Task specification for simple example.
                 self.latest_goal = [
-                    ("HasAll", "bin_b_", "square"),
+                    ("HasAll", "bin_a", "triangle"),
+                    ("HasAll", "bin_b", "circle"),
+                    ("HasAll", "bin_c", "square"),
                     ("At", "robot", "module"),
                 ]
             elif scenario == "c":
-                self.get_logger().info("Planning for derived example.")
+                self.get_logger().info(f"Planning for scenario {scenario}.")
 
-                # Task specification for simple example.
                 self.latest_goal = [
-                    ("HasAll", "bin_c_", "circle"),
+                    ("HasAll", "bin_a", "triangle"),
+                    ("HasAll", "bin_b", "circle"),
+                    ("Has", "bin_c", "square"),
                     ("At", "robot", "module"),
-
                 ]
             elif scenario == "d":
-                self.get_logger().info("Planning for derived example.")
+                self.get_logger().info(f"Planning for scenario {scenario}.")
 
-                # Task specification for simple example.
                 self.latest_goal = [
-                    ("HasAll", "bin_d_", "rectangle"),
+                    ("HasAll", "bin_a", "triangle"),
+                    ("Has", "bin_b", "circle"),
+                    ("HasAll", "bin_c", "square"),
+                    ("Has", "bin_c", "circle"),
                     ("At", "robot", "module"),
                 ]
             elif scenario == "e":
@@ -112,8 +118,8 @@ class PlannerNode(Node):
 
                 # Task specification for simple example.
                 self.latest_goal = [
-                    ("HasNone", "bin_a_", "triangle"),
-                    ("At", "robot", "module"),
+                    ("Place", "robot1", "helmet", "assembly_rack"),
+                    ("At", "robot1", "module"),
                 ]
             else:
                 print(f"Invalid scenario: {scenario}")
