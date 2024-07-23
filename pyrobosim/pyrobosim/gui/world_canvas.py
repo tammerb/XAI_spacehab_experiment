@@ -68,7 +68,7 @@ class WorldCanvas(FigureCanvasQTAgg):
         show=True,
         dpi=100,
         animation_dt=0.0001,
-        realtime_factor=0.5,
+        realtime_factor=1.0,
     ):
         """
         Creates an instance of a pyrobosim figure canvas.
