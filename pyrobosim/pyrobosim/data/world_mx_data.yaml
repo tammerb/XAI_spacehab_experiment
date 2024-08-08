@@ -1,0 +1,161 @@
+#####################################
+# Multirobot test world description #
+#####################################
+
+# WORLD PARAMETERS
+params:
+  name: world1
+  object_radius: 0.0375  # Radius around objects
+  wall_height: 2.0  # Wall height for exporting to Gazebo
+
+
+# METADATA: Describes information about locations and objects
+metadata:
+  locations: $DATA/location_data.yaml
+  objects: $DATA/object_data.yaml
+
+
+# ROBOTS
+robots:
+  - name: robot
+    radius: 0.1
+    color: [.1, 0.1, .1]
+    location: laboratory
+    pose: [6.0, 0, 0]
+    max_linear_velocity: 0.1
+    path_planner:
+      type: astar
+      occupancy_grid:
+        resolution: 0.05
+        inflation_radius: 0.15
+      heuristic: euclidean
+      diagonal_motion: true
+      compress_path: true
+
+# ROOMS:
+rooms:
+  - name: storage_module
+    footprint:
+      type: box
+      dims: [6, 4]
+      offset: [0, 6]
+    wall_width: 0.2
+    color: [0, 0.6, 0]
+  - name: service_module
+    footprint:
+      type: box
+      dims: [6, 4]
+      offset: [0, 0]
+    wall_width: 0.2
+    color: [0, 0.6, 0]
+  - name: laboratory
+    footprint:
+      type: box
+      dims: [3, 4]
+      offset: [6, 0]
+    wall_width: 0.2
+    color: [0, 0.6, 0]
+
+# HALLWAYS:
+hallways:
+  - room_start: storage_module
+    room_end: service_module
+    width: 1.5
+    conn_method: auto
+  - room_start: laboratory
+    room_end: service_module
+    width: 1.5
+    conn_method: auto
+
+# LOCATIONS:
+locations:
+  - name: charging_station1
+    category: charging_station
+    parent: laboratory
+    pose: [6, 1.5, 0, 0]
+
+  - name: eclss_rack
+    category: eclss_rack
+    parent: service_module
+    pose: [0, -1.25, 0, 0]
+
+  #- name: helmets
+  #  category: eva_rack
+  #  parent: module
+  #  pose: [-0.5, 1.5, 0, 0]
+  #
+  #- name: gloves
+  #  category: eva_rack
+  #  parent: module
+  #  pose: [-2.5, -1.5, 0, 0]
+#
+  #- name: boots
+  #  category: eva_rack
+  #  parent: module
+  #  pose: [-1.5, -1.5, 0, 0]
+#
+  #- name: assembly_rack
+  #  category: airlock_rack
+  #  parent: airlock
+  #  pose: [2.0, 0.0, 0, 0]
+# OBJECTS: Can be picked, placed, and moved by robot
+#objects:
+  #- category: torso
+  #  name: torso_1
+  #  parent: torsos
+  #  pose: [-3.7, 1.7, 0, 0.707]
+  #- category: torso
+  #  name: torso_2
+  #  parent: torsos
+  #  pose: [-3.3, 1.7, 0, 0.707]
+  #- category: torso
+  #  name: torso_3
+  #  parent: torsos
+  #  pose: [-3.7, 1.3, 0, 0.707]
+  #- category: torso
+  #  name: torso_4
+  #  parent: torsos
+  #  pose: [-3.3, 1.3, 0, 0.707]
+#
+  #- category: waist
+  #  name: waist_1
+  #  parent: waists
+  #  pose: [-2.3, 1.7, 0, 0.707]
+  #- category: waist
+  #  name: waist_2
+  #  parent: waists
+  #  pose: [-1.85, 1.7, 0, 0.707]
+  #- category: waist
+  #  name: waist_3
+  #  parent: waists
+  #  pose: [-2.3, 1.4, 0, 0.707]
+  #- category: waist
+  #  name: waist_4
+  #  parent: waists
+  #  pose: [-1.85, 1.4, 0, 0.707]
+#
+  #- category: helmet
+  #  name: helmet_1
+  #  parent: helmets
+  #  pose: [-0.7, 1.7, 0, 0]
+  #- category: helmet
+  #  name: helmet_2
+  #  parent: helmets
+  #  pose: [-0.3, 1.7, 0, 0]
+  #- category: helmet
+  #  name: helmet_3
+  #  parent: helmets
+  #  pose: [-0.7, 1.3, 0, 0]
+  #- category: helmet
+  #  name: helmet_4
+  #  parent: helmets
+  #  pose: [-0.3, 1.3, 0, 0]
+#
+  #- category: helmet
+  #  name: helmet_4
+  #  parent: assembly_rack
+  #- category: arm
+  #  name: M_arm_1
+  #  parent: rack_b
+  #  pose: [-3.5, 0.0, 0.0, 0.0]
+

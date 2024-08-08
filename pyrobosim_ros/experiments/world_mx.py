@@ -16,7 +16,7 @@ from pyrobosim.navigation import ConstantVelocityExecutor, PathPlanner
 from pyrobosim.navigation import OccupancyGrid
 from pyrobosim.utils.pose import Pose
 
-default_world_file = "world2_data.yaml"
+default_world_file = "world_mx_data.yaml"
 
 def load_world():
     """Load a test world."""

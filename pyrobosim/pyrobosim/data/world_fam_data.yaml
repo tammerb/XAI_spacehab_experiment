@@ -46,18 +46,10 @@ rooms:
 
 # LOCATIONS: Can contain objects
 locations:
-  - name: bin_1
-    category: storage_bin
-    parent: module
-    pose: [-1, 1.7, 0, 1.571] # x, y, z, yaw
-  - name: bin_2
+  - name: bin
     category: storage_bin
     parent: module
     pose: [0, 1.7, 0, 1.571]
-  - name: bin_3
-    category: storage_bin
-    parent: module
-    pose: [1, 1.7, 0, 1.571]
 
   - name: workspace
     category: work_rack
@@ -66,14 +58,6 @@ locations:
 
 # OBJECTS: Can be picked, placed, and moved by robot
 objects:
-  - category: triangle
-    parent: workspace
-
-  - category: triangle
-    parent: workspace
-
-  - category: triangle
-    parent: workspace
 
   - category: circle
     parent: workspace
@@ -82,13 +66,4 @@ objects:
     parent: workspace
 
   - category: circle
-    parent: workspace
-
-  - category: square
-    parent: workspace
-
-  - category: square
-    parent: workspace
-
-  - category: square
     parent: workspace

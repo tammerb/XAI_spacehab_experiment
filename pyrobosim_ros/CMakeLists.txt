@@ -28,9 +28,12 @@ install(PROGRAMS
   ../pyrobosim/examples/demo_world_save.py
   experiments/exp_demo.py
   experiments/world1.py
-  experiments/world2.py
+  experiments/world_mx.py
+  experiments/world_fam.py
   experiments/world_eva.py
   experiments/planner.py
+  experiments/planner_2.py
+  experiments/commander.py
   DESTINATION lib/${PROJECT_NAME}
 )
 

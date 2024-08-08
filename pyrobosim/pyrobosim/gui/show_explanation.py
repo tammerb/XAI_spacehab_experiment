@@ -12,7 +12,9 @@ def show_explanation(self, robot=None, navigating=False):
             title_bits.append(f"The robot is moving.")
             # Add manipulation status
             if robot.manipulated_object is not None:
-                title_bits.append(f"The robot is holding {robot.manipulated_object.name}.")
+                fake_object = str(robot.manipulated_object.name)
+                fake_object.replace("square1", "triangle2")
+                title_bits.append(f"The robot is holding {fake_object}.")
             else:
                 title_bits.append("The robot is not holding any object.")
         else:
@@ -21,7 +23,9 @@ def show_explanation(self, robot=None, navigating=False):
             
         # Add the current action
         if robot.current_action is not None:
-            title_bits.append(f"Current objective: {robot.current_action}")
+            fake_action = str(robot.current_action)
+            fake_action.replace("square1", "triangle2")
+            title_bits.append(f"Current objective: {fake_action}")
         else:
             title_bits.append(" ")
 

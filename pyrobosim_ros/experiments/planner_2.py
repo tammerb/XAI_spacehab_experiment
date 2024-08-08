@@ -80,43 +80,15 @@ class PlannerNode(Node):
 
                 # Task specification for simple example.
                 self.latest_goal = [
-                    ("HasAll", "bin_", "circle"),
-                    ("At", "robot", "module"),
+                    ("At", "robot", "service_module"),
                 ]
             elif scenario == "b":
                 self.get_logger().info(f"Planning for scenario {scenario}.")
 
                 self.latest_goal = [
-                    ("HasAll", "bin_1_", "triangle"),
-                    ("HasAll", "bin_2_", "circle"),
-                    ("HasAll", "bin_3_", "square"),
-                    ("At", "robot", "module"),
-                ]
-            elif scenario == "c":
-                self.get_logger().info(f"Planning for scenario {scenario}.")
-
-                self.latest_goal = [
-                    ("HasAll", "bin_1_", "triangle"),
-                    ("Has", "bin_2_", "circle"),
-                    ("HasAll", "bin_3_", "square"),
-                    ("At", "robot", "module"),
-                ]
-            elif scenario == "d":
-                self.get_logger().info(f"Planning for scenario {scenario}.")
-
-                self.latest_goal = [
-                    ("HasAll", "bin_1_", "triangle"),
-                    ("HasAll", "bin_2_", "circle"),
-                    ("Has", "bin_3_", "square"),
-                    ("HasNone", "workspace_", "square"),
-                    ("At", "robot", "module"),
-                ]
-            elif scenario == "e":
-                self.get_logger().info("Planning for derived example.")
-
-                # Task specification for simple example.
-                self.latest_goal = [
-                    ("HasNone", "workspace_", "square"),
+                    ("HasAll", "bin_a", "triangle"),
+                    ("HasAll", "bin_b", "circle"),
+                    ("HasAll", "bin_c", "square"),
                     ("At", "robot", "module"),
                 ]
             else:
