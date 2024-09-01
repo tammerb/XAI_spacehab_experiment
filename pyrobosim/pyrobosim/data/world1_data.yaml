@@ -19,8 +19,8 @@ robots:
   - name: robot
     radius: 0.1
     color: [0, .7, .5]
-    location: module
-    pose: [1, 0.75, 0]
+    location: start_location
+    pose: [1, 0.4, 0]
     max_linear_velocity: 0.1
     path_planner:
       type: astar
@@ -34,7 +34,7 @@ robots:
 
 # ROOMS: Polygonal regions that can contain object locations
 rooms:
-  - name: module
+  - name: start_location
     footprint:
       type: box
       dims: [5, 4]
@@ -46,49 +46,58 @@ rooms:
 
 # LOCATIONS: Can contain objects
 locations:
-  - name: bin_1
+  - name: bin-1
     category: storage_bin
-    parent: module
-    pose: [-1, 1.7, 0, 1.571] # x, y, z, yaw
-  - name: bin_2
+    parent: start_location
+    pose: [-1, 1.2, 0, 1.571] # x, y, z, yaw
+  - name: bin-2
     category: storage_bin
-    parent: module
-    pose: [0, 1.7, 0, 1.571]
-  - name: bin_3
+    parent: start_location
+    pose: [0, 1.2, 0, 1.571]
+  - name: bin-3
     category: storage_bin
-    parent: module
-    pose: [1, 1.7, 0, 1.571]
+    parent: start_location
+    pose: [1, 1.2, 0, 1.571]
 
   - name: workspace
     category: work_rack
-    parent: module
-    pose: [0, -0.5, 0, 0]
+    parent: start_location
+    pose: [0, -0.9, 0, 0]
 
 # OBJECTS: Can be picked, placed, and moved by robot
 objects:
   - category: triangle
     parent: workspace
+    name: triangle-1
 
   - category: triangle
     parent: workspace
+    name: triangle-2
 
   - category: triangle
     parent: workspace
+    name: triangle-3
 
   - category: circle
     parent: workspace
+    name: circle-1
 
   - category: circle
     parent: workspace
+    name: circle-2
 
   - category: circle
     parent: workspace
+    name: circle-3
 
   - category: square
     parent: workspace
+    name: square-1
 
   - category: square
     parent: workspace
+    name: square-2
 
   - category: square
     parent: workspace
+    name: square-3

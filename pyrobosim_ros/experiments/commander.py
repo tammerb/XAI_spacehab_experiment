@@ -55,58 +55,52 @@ def main():
     if mode == "action":
         cmd.get_logger().info("Executing task action...")
         goal = ExecuteTaskAction.Goal()
-        goal.action = TaskAction(robot="robot", type="navigate", target_location="service_module")
+        goal.action = TaskAction(robot="robot", type="navigate", target_location="bin-1_ ")
         cmd.send_action_goal(goal)
 
-    elif mode == "plan":
+    elif mode == "good_plan":
         cmd.get_logger().info("Executing task plan...")
         task_actions = [
-            TaskAction(type="navigate", target_location="workspace"),
-            TaskAction(type="pick", object="square"),
-            TaskAction(type="navigate", target_location="bin"),
+            TaskAction(type="navigate", target_location="workspace_"),
+            TaskAction(type="pick", object="triangle-1"),
+            TaskAction(type="navigate", target_location="bin-1_ "),
             TaskAction(type="place"),
-            TaskAction(type="navigate", target_location="module"),
+            TaskAction(type="navigate", target_location="workspace_"),
+            TaskAction(type="pick", object="triangle-2"),
+            TaskAction(type="navigate", target_location="bin-1_ "),
+            TaskAction(type="place"),
+            TaskAction(type="navigate", target_location="workspace_"),
+            TaskAction(type="pick", object="triangle-3"),
+            TaskAction(type="navigate", target_location="bin-1_ "),
+            TaskAction(type="place"),
+            TaskAction(type="navigate", target_location="workspace_"),
+            TaskAction(type="pick", object="circle-1"),
+            TaskAction(type="navigate", target_location="bin-2_ "),
+            TaskAction(type="place"),
+            TaskAction(type="navigate", target_location="workspace_"),
+            TaskAction(type="pick", object="circle-2"),
+            TaskAction(type="navigate", target_location="bin-2_ "),
+            TaskAction(type="place"),
+            TaskAction(type="navigate", target_location="workspace_"),
+            TaskAction(type="pick", object="circle-3"),
+            TaskAction(type="navigate", target_location="bin-2_ "),
+            TaskAction(type="place"),
+            TaskAction(type="navigate", target_location="workspace_"),
+            TaskAction(type="pick", object="square-1"),
+            TaskAction(type="navigate", target_location="bin-3_ "),
+            TaskAction(type="place"),
+            TaskAction(type="navigate", target_location="workspace_"),
+            TaskAction(type="pick", object="square-2"),
+            TaskAction(type="navigate", target_location="bin-3_ "),
+            TaskAction(type="place"),
+            TaskAction(type="navigate", target_location="workspace_"),
+            TaskAction(type="pick", object="square-3"),
+            TaskAction(type="navigate", target_location="bin-3_ "),
+            TaskAction(type="place"),
+            TaskAction(type="navigate", target_location="start_location"),
         ]
         goal = ExecuteTaskPlan.Goal()
         goal.plan = TaskPlan(robot="robot", actions=task_actions)
-        cmd.send_plan_goal(goal)
-
-    elif mode == "multirobot-plan":
-        cmd.get_logger().info("Executing multirobot task plan...")
-        task_actions = [
-            TaskAction(type="navigate", target_location="desk"),
-            TaskAction(type="pick", object="water"),
-            TaskAction(type="navigate", target_location="counter"),
-            TaskAction(type="place"),
-            TaskAction(type="navigate", target_location="kitchen"),
-        ]
-        goal = ExecuteTaskPlan.Goal()
-        goal.plan = TaskPlan(robot="robot0", actions=task_actions)
-        cmd.send_plan_goal(goal)
-
-        time.sleep(2.0)
-
-        task_actions = [
-            TaskAction(type="navigate", target_location="table"),
-            TaskAction(type="pick", object="apple"),
-            TaskAction(type="navigate", target_location="desk"),
-            TaskAction(type="place"),
-            TaskAction(type="navigate", target_location="bedroom"),
-        ]
-        goal = ExecuteTaskPlan.Goal()
-        goal.plan = TaskPlan(robot="robot1", actions=task_actions)
-        cmd.send_plan_goal(goal)
-
-        time.sleep(2.0)
-
-        task_actions = [
-            TaskAction(type="navigate", target_location="table"),
-            TaskAction(type="pick", object="banana"),
-            TaskAction(type="navigate", target_location="counter0_left"),
-            TaskAction(type="place"),
-        ]
-        goal = ExecuteTaskPlan.Goal()
-        goal.plan = TaskPlan(robot="robot2", actions=task_actions)
         cmd.send_plan_goal(goal)
 
     else:

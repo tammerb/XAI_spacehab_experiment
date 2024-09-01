@@ -80,36 +80,38 @@ class PlannerNode(Node):
 
                 # Task specification for simple example.
                 self.latest_goal = [
-                    ("HasAll", "bin_", "circle"),
-                    ("At", "robot", "module"),
+                    ("Has", "bin-2_ ", "circle-1"),
+                    ("At", "robot", "start_location"),
                 ]
             elif scenario == "b":
                 self.get_logger().info(f"Planning for scenario {scenario}.")
 
                 self.latest_goal = [
-                    ("HasAll", "bin_1_", "triangle"),
-                    ("HasAll", "bin_2_", "circle"),
-                    ("HasAll", "bin_3_", "square"),
-                    ("At", "robot", "module"),
+                    ("HasAll", "bin-1_ ", "triangle"),
+                    ("HasAll", "bin-2_ ", "circle"),
+                    ("HasAll", "bin-3_ ", "square"),
+                    ("At", "robot", "start_location"),
                 ]
             elif scenario == "c":
                 self.get_logger().info(f"Planning for scenario {scenario}.")
 
                 self.latest_goal = [
-                    ("HasAll", "bin_1_", "triangle"),
-                    ("Has", "bin_2_", "circle"),
-                    ("HasAll", "bin_3_", "square"),
-                    ("At", "robot", "module"),
+                    ("HasAll", "bin-1_ ", "triangle"),
+                    ("Has", "bin-2_ ", "circle-1"),
+                    ("Has", "bin-2_ ", "circle-2"),
+                    ("HasAll", "bin-3_ ", "square"),
+                    ("At", "robot", "start_location"),
                 ]
             elif scenario == "d":
                 self.get_logger().info(f"Planning for scenario {scenario}.")
 
                 self.latest_goal = [
-                    ("HasAll", "bin_1_", "triangle"),
-                    ("HasAll", "bin_2_", "circle"),
-                    ("Has", "bin_3_", "square"),
-                    ("HasNone", "workspace_", "square"),
-                    ("At", "robot", "module"),
+                    ("HasAll", "bin-1_ ", "triangle"),
+                    ("HasAll", "bin-2_ ", "circle"),
+                    ("Has", "bin-3_ ", "square-1"),
+                    ("Has", "bin-3_ ", "square-2"),
+                    ("Has", "bin-1_ ", "square-3"),
+                    ("At", "robot", "start_location"),
                 ]
             elif scenario == "e":
                 self.get_logger().info("Planning for derived example.")
@@ -117,7 +119,33 @@ class PlannerNode(Node):
                 # Task specification for simple example.
                 self.latest_goal = [
                     ("HasNone", "workspace_", "square"),
-                    ("At", "robot", "module"),
+                    ("At", "robot", "start_location"),
+                ]
+            elif scenario == "tri":
+                self.get_logger().info(f"Planning for scenario {scenario}.")
+
+                self.latest_goal = [
+                    ("HasAll", "bin-1_ ", "triangle"),
+                ]
+            elif scenario == "cir":
+                self.get_logger().info(f"Planning for scenario {scenario}.")
+
+                self.latest_goal = [
+                    ("HasAll", "bin-2_ ", "circle"),
+                ]
+            elif scenario == "cir_fail":
+                self.get_logger().info(f"Planning for scenario {scenario}.")
+
+                self.latest_goal = [
+                    ("Has", "bin-2_ ", "circle-1"),
+                    ("Has", "bin-2_ ", "circle-2"),
+                ]
+            elif scenario == "sq":
+                self.get_logger().info(f"Planning for scenario {scenario}.")
+
+                self.latest_goal = [
+                    ("HasAll", "bin-3_ ", "square"),
+                    ("At", "robot", "start_location"),
                 ]
             else:
                 print(f"Invalid scenario: {scenario}")
